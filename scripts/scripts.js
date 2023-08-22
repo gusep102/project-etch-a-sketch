@@ -1,7 +1,9 @@
 // variables
 let gridContainer;
+let sizeDisplay;
+let currentGridSize = 16;
 // create grid fuction
-function createGrid(initSize = 16) {
+function createGrid(initSize = currentGridSize) {
     // create grid container
     gridContainer = document.createElement('div');
     gridContainer.setAttribute('class', 'grid');
@@ -35,31 +37,72 @@ function createGrid(initSize = 16) {
     }
 }
 
+function createGridSizeDisplay(size) {
+    sizeDisplay = document.createElement('div');
+    sizeDisplay.setAttribute('class', 'sizeDisplay');
+    sizeDisplay.classList.add('flex-item');
+    sizeDisplay.textContent = `${size} X ${size}`;
+    body.appendChild(sizeDisplay);
+}
+
 // create main container
 const body = document.querySelector('body');
 body.classList.add('flex-container');
+
+// create button container
+const buttonContainer = document.createElement('div');
+buttonContainer.setAttribute('class', 'button-Container');
+buttonContainer.classList.add('flex-container');
+buttonContainer.classList.add('flex-item');
+body.appendChild(buttonContainer);
 
 //create button allow user to select grid size
 const changeSizeButton = document.createElement('button');
 changeSizeButton.setAttribute('class', 'button');
 changeSizeButton.classList.add('flex-item');
 changeSizeButton.textContent = "Change Grid Size";
-body.appendChild(changeSizeButton);
+buttonContainer.appendChild(changeSizeButton);
 
+// create reset button
+const resetButton = document.createElement('button');
+resetButton.setAttribute('class', 'button');
+resetButton.classList.add('flex-item');
+resetButton.textContent = 'Reset Grid';
+buttonContainer.appendChild(resetButton);
+
+// display size
+createGridSizeDisplay(currentGridSize);
 
 // create initial grid
 createGrid();
+
+
 
 // if new grid size is decided create the grid
 changeSizeButton.addEventListener('click', function (f) {
     let newSize = parseInt(prompt('Please enter new grid size ?x? (0-100)', 16));
     if (newSize > 0 && newSize <= 100 && Number.isInteger(newSize)) {
+        currentGridSize = newSize;
+
+        body.removeChild(sizeDisplay);
+        createGridSizeDisplay(currentGridSize);
+
         body.removeChild(gridContainer);
-        createGrid(newSize);
+        createGrid(currentGridSize);
+        
     }
     
 
     
 })
+
+buttonContainer.addEventListener('click', function (f) {
+    body.removeChild(gridContainer);
+    createGrid(currentGridSize);
+
+})
+
+
+
 
 

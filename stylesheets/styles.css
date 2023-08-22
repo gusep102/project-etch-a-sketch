@@ -9,10 +9,23 @@
 }
 
 .flex-item {
-    flex:  1;
-    text-align: center;
+    flex:  1 1 auto;
+
 }
 
 body.flex-container {
     flex-direction: column;
+}
+
+.row.flex-container {
+    justify-content: center;
+}
+
+.block.flex-item {
+    flex: 0 1 auto;
+}
+
+.block {
+    width: 25px;
+    height:25px;
 }

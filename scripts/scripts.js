@@ -9,15 +9,16 @@ body.classList.add('flex-container');
 //loop 16 times to create 16 columns
 for (let x = 0; x < 16; x++) {
     const container = document.createElement('div');
-    container.setAttribute('class', 'flex-container');
-
+    container.setAttribute('class', 'row');
+    container.classList.add('flex-container');
     body.appendChild(container);
     //loop 16 times to create 16 rows of divs
     for (let y = 0; y < 16; y++) {
         const block = document.createElement('div');
-        block.setAttribute('class', 'flex-item');
+        block.setAttribute('class', 'block');
+        block.classList.add('flex-item');
         // test text
-        block.textContent = 'X';
+        // block.textContent = 'X';
         container.appendChild(block);
         
     }

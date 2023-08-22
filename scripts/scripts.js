@@ -41,7 +41,7 @@ function createGridSizeDisplay(size) {
     sizeDisplay = document.createElement('div');
     sizeDisplay.setAttribute('class', 'sizeDisplay');
     sizeDisplay.classList.add('flex-item');
-    sizeDisplay.textContent = `${size} X ${size}`;
+    sizeDisplay.textContent = `Grid size: ${size} X ${size}`;
     body.appendChild(sizeDisplay);
 }
 
@@ -67,7 +67,7 @@ buttonContainer.appendChild(changeSizeButton);
 const resetButton = document.createElement('button');
 resetButton.setAttribute('class', 'button');
 resetButton.classList.add('flex-item');
-resetButton.textContent = 'Reset Grid';
+resetButton.textContent = 'Clear Grid';
 buttonContainer.appendChild(resetButton);
 
 // display size
@@ -79,24 +79,33 @@ createGrid();
 
 
 // if new grid size is decided create the grid
-changeSizeButton.addEventListener('click', function (f) {
-    let newSize = parseInt(prompt('Please enter new grid size ?x? (0-100)', 16));
-    if (newSize > 0 && newSize <= 100 && Number.isInteger(newSize)) {
-        currentGridSize = newSize;
+changeSizeButton.addEventListener('click', function a(f) {
+    let newSize = prompt('Please enter new grid size ?x? (0-100)', 16);
 
-        body.removeChild(sizeDisplay);
-        createGridSizeDisplay(currentGridSize);
-
-        body.removeChild(gridContainer);
-        createGrid(currentGridSize);
-        
+    if (newSize == null) {
+    }else {
+        newSize = parseInt(newSize);
+        if (newSize > 0 && newSize <= 100 && Number.isInteger(newSize)) {
+            currentGridSize = newSize;
+    
+            body.removeChild(sizeDisplay);
+            createGridSizeDisplay(currentGridSize);
+    
+            body.removeChild(gridContainer);
+            createGrid(currentGridSize);
+            
+        } else {
+            alert(`not a valid input`);
+            a();
+        }
     }
+     
     
 
     
 })
 
-buttonContainer.addEventListener('click', function (f) {
+resetButton.addEventListener('click', function (f) {
     body.removeChild(gridContainer);
     createGrid(currentGridSize);
 

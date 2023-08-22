@@ -2,9 +2,9 @@
 let gridContainer;
 let sizeDisplay;
 let currentGridSize = 16;
-// create grid fuction
+// Function Declaration
 function createGrid(initSize = currentGridSize) {
-    // create grid container
+
     gridContainer = document.createElement('div');
     gridContainer.setAttribute('class', 'grid');
     gridContainer.classList.add('flex-container');
@@ -56,7 +56,7 @@ buttonContainer.classList.add('flex-container');
 buttonContainer.classList.add('flex-item');
 body.appendChild(buttonContainer);
 
-//create button allow user to select grid size
+//create button to allow user to select grid size
 const changeSizeButton = document.createElement('button');
 changeSizeButton.setAttribute('class', 'button');
 changeSizeButton.classList.add('flex-item');
@@ -76,9 +76,7 @@ createGridSizeDisplay(currentGridSize);
 // create initial grid
 createGrid();
 
-
-
-// if new grid size is decided create the grid
+// Event Listeners Declarations
 changeSizeButton.addEventListener('click', function a(f) {
     let newSize = prompt('Please enter new grid size ?x? (0-100)', 16);
 

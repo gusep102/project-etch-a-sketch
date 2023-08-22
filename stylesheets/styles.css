@@ -1,9 +1,3 @@
-/* using flexbox please add at minimum one of these to every element */
-/* * {
-    border-style: dashed;
-    border-color: red;
-} */
-
 .flex-container {
     display: flex;
 }

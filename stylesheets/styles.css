@@ -1,8 +1,8 @@
 /* using flexbox please add at minimum one of these to every element */
-* {
+/* * {
     border-style: dashed;
     border-color: red;
-}
+} */
 
 .flex-container {
     display: flex;
@@ -15,6 +15,17 @@
 
 body.flex-container {
     flex-direction: column;
+    align-items: center;
+}
+
+.grid.flex-container {
+    flex-direction: column;
+    width: 960px;
+    height: 960px;
+    border-style:solid;
+    border-color: black;
+    border-width: 1px;
+
 }
 
 .row.flex-container {
@@ -22,13 +33,15 @@ body.flex-container {
 }
 
 .block.flex-item {
-    flex: 0 1 auto;
+    flex: 1 1 auto;
 }
 
 .block {
-    width: 25px;
-    height:25px;
     background-color: white;
+    border-style:solid;
+    border-color: black;
+    border-width: 1px;
+    
 }
 
 .hover {
